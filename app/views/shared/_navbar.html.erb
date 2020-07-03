@@ -1,0 +1,23 @@
+<div class="blob-nav-white bleu-blob-bg">
+  <div class="top-of-nav">
+    <%= link_to root_path(anchor: 'top-of-the-blob') do  %>
+      <div class="blob-logo">
+          <h1 class="blob-logo-text">Atelier Blob</h1>
+      </div>
+    <% end %>
+    <div class="right-side-nav">
+      <p class="what-is-blob supermarket vert-blob-text">un
+        atelier de pratique pluridisciplinaire cree par</p>
+      <h2 class="say-our-names yatis vert-blob-text">clara flores</h2>
+      <h2 class="say-our-names yatis vert-blob-text">+ chloe tournoux</h2>
+      <h2 class="say-our-names yatis vert-blob-text">+ paul lahana</h2>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="blob_admin">
+      <%= link_to "j'ajoute un blob", new_article_path %>
+      <%= link_to "je me déco", destroy_user_session_path, method: :delete %>
+    </div>
+  <% end %>
+</div>

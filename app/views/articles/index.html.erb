@@ -1,0 +1,6 @@
+<div id="top-of-the-blob"></div>
+<% @articles.each do |article| %>
+  <div class="article_boite">
+    <%= render 'article', article: article %>
+  </div>
+<% end %>

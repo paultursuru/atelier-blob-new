@@ -1,0 +1,85 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.blob-logo {
+  background: white;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-15deg);
+  .blob-logo-text {
+    font-family: "yatis";
+    font-size: 25px;
+    color: $bleu-blob;
+    position: relative;
+    left: 20px;
+    top: 6px;
+  }
+}
+
+.blob-nav-white {
+  width: 100vw;
+  position: fixed;
+  z-index: 10;
+  .top-of-nav {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .right-side-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      height: 100px;
+      flex-wrap: wrap;
+      .say-our-names {
+        font-size: 16px;
+        text-align: right;
+        margin: 0;
+        width: max-content;
+      }
+      .what-is-blob {
+        font-size: 10px;
+        text-align: right;
+        margin: 0;
+      }
+    }
+  }
+}
+
+
+
+
+#top-of-the-blob {
+  height: 130px;
+  position: relative;
+}
+
+.blob-container {
+  margin: 0 15px;
+}
+
+.blob_admin {
+  position: fixed;
+  top: 120px;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  padding: 0 20px;
+  background:white;
+  a {
+    width: max-content;
+  }
+}
+

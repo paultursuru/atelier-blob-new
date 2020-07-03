@@ -1,0 +1,16 @@
+$vert_blob : #00FF94;
+$bleu_blob : #0000FF;
+
+
+.vert-blob-text {
+  color: $vert_blob;
+}
+.bleu-blob-text {
+  color: $bleu_blob;
+}
+.vert-blob-bg {
+  background: $vert_blob;
+}
+.bleu-blob-bg {
+  background: $bleu_blob;
+}

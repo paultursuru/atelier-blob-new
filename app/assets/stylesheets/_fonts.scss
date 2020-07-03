@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'yatis';
+  src: font-url('Yatis_black.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'supermarketIt';
+  src: font-url('SuperMarketSaleItalic.woff') format('woff');
+}
+
+
+.yatis {
+  font-family: 'yatis';
+}
+.supermarket {
+  font-family: 'supermarketIt';
+}

@@ -1,0 +1,21 @@
+<% anchored = article.title.nil? ? "article-#{article.id}" : article.title.to_s.parameterize %>
+<h3 class="title supermarket" id="<%= anchored %>">
+  <%= article.title unless article.title.nil? %>
+</h3>
+<%= link_to "share", articles_path(anchor: anchored), class: "link-to-share yatis"  %>
+<% if user_signed_in? %>
+  <%= link_to "j'édite le blob", edit_article_path(article) %>
+  <% if !article.visible %>
+    <p class="legende">ce blob est invisible au grand public</p>
+  <% end %>
+<% end %>
+<div class="article_photo">
+  <%= cl_image_tag article.photo.key, width: 300, crop: "scale" if article.photo.attached? %>
+</div>
+<div class="description-of-this-blob">
+  <p class="material">
+    <%= article.material + ", " unless article.material.nil? %>
+    <%= article.year unless article.year.nil? %></p>
+  <p class="article_text"><%= article.article_text unless article.article_text.nil? %></p>
+</div>
+

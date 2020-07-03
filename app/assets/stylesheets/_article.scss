@@ -1,0 +1,39 @@
+.big-title {
+  font-size: 150px;
+}
+.article_boite {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px auto;
+  .title {
+    margin: 0;
+  }
+  .description-of-this-blob {
+    display: flex;
+    flex-wrap: wrap;
+    .material, .article_text {
+      width: 100%;
+      margin: 0;
+    }
+    .material {
+      font-style: italic;
+      font-size: 14px;
+    }
+    .article_text {
+      font-size: 12px;
+    }
+  }
+}
+.legende {
+  font-size: 10px;
+}
+.link-to-share {
+  width: max-content;
+  font-size: 14px;
+  color: black;
+  &:hover {
+    color: black;
+    text-decoration: none;
+  }
+}

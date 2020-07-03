@@ -1,0 +1,12 @@
+<%= simple_form_for(@article) do |f| %>
+  <%= f.input :title %>
+  <%= f.input :material %>
+  <%= f.input :year %>
+  <%= f.input :article_text, as: :text %>
+  <%= f.input :ext_url %>
+  <%= f.input :article_type, collection: ['document', 'art', 'information'] %>
+  <%= f.input :visible, as: :radio_buttons %>
+  <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill if @article.photo.attached? %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
