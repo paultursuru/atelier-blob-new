@@ -8,6 +8,19 @@ html {
   }
 }
 
+.vert-blob-text {
+  color: $vert_blob;
+}
+.bleu-blob-text {
+  color: $bleu_blob;
+}
+.vert-blob-bg {
+  background: $vert_blob;
+}
+.bleu-blob-bg {
+  background: $bleu_blob;
+}
+
 .blob-logo {
   background: white;
   width: 100px;
