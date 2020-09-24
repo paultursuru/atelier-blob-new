@@ -1,27 +1,32 @@
 .big-title {
   font-size: 150px;
 }
-.article_boite {
+.articles-boite {
   display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin: 20px auto;
-  .title {
-    margin: 0;
-  }
-  .description-of-this-blob {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  .article-boite {
     display: flex;
-    flex-wrap: wrap;
-    .material, .article_text {
-      width: 100%;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px 30px 40px 30px;
+    .title {
       margin: 0;
     }
-    .material {
-      font-style: italic;
-      font-size: 14px;
-    }
-    .article_text {
-      font-size: 12px;
+    .description-of-this-blob {
+      display: flex;
+      flex-wrap: wrap;
+      .material, .article_text {
+        width: 100%;
+        margin: 0;
+      }
+      .material {
+        font-style: italic;
+        font-size: 14px;
+      }
+      .article_text {
+        font-size: 12px;
+      }
     }
   }
 }
