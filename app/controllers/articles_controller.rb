@@ -3,9 +3,9 @@ class ArticlesController < ApplicationController
 
   def index
     if user_signed_in?
-      @articles = Article.all
+      @articles = Article.all.order(created_at: :desc)
     else
-      @articles = Article.all.where(visible: true)
+      @articles = Article.all.order(created_at: :desc).where(visible: true)
     end
   end
 

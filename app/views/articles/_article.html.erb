@@ -1,21 +1,61 @@
-<div class="article-boite" id="<%= article.title.nil? ? "article-#{article.id}" : article.title.to_s.parameterize %>">
+<div class="article-boite <%= article.visible ? "" : "non-visible" %>" id="<%= article.title.nil? ? "article-#{article.id}" : article.title.to_s.parameterize %>">
   <h3 class="title supermarket">
     <%= article.title unless article.title.nil? %>
   </h3>
   <%#= link_to "share", articles_path(anchor: anchored), class: "link-to-share yatis"  %>
   <% if user_signed_in? %>
     <%= link_to "j'édite le blob", edit_article_path(article) %>
-    <% if !article.visible %>
+    <% unless article.visible %>
       <p class="legende">ce blob est invisible au grand public</p>
     <% end %>
   <% end %>
-  <div class="article_photo">
-    <%= cl_image_tag article.photo.key, width: 300, crop: "scale" if article.photo.attached? %>
-  </div>
+  <% if article.photo.attached? %>
+    <div class="article-photo">
+      <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
+        <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
+      </button>
+    </div>
+  <% end %>
   <div class="description-of-this-blob">
     <p class="material">
       <%= article.material + ", " unless article.material.empty? %>
       <%= article.year unless article.year.nil? %></p>
-    <p class="article_text"><%= article.article_text unless article.article_text.nil? %></p>
+    <% unless article.article_text.nil? %>
+      <% if article.article_text.length < 200 %>
+        <p class="article-text"><%= article.article_text %></p>
+      <% elsif article.article_text.length > 200 && article.photo.attached? %>
+        <p class="article-text"><%= article.article_text.first(200) %></p>
+        <button type="button" class="modal-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
+          +
+        </button>
+      <% else %>
+        <p class="article-text"><%= article.article_text %></p>
+      <% end %>
+    <% end %>
+    <div class="modal fade" id="modalArticle-<%= article.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <% unless article.title.nil? %>
+              <h5 class="supermarket" id="exampleModalLongTitle"><%= article.title %></h5>
+            <% end %>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <% if article.photo.attached? %>
+              <div class="article-photo">
+                <%= cl_image_tag article.photo.key, width: 500, crop: "scale" %>
+              </div>
+            <% end %>
+            <p class="material">
+              <%= article.material + ", " unless article.material.empty? %>
+              <%= article.year unless article.year.nil? %></p>
+            <p class="article-text"><%= article.article_text unless article.article_text.nil? %></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
