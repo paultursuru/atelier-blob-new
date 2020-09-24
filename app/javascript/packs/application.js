@@ -20,3 +20,8 @@ import "bootstrap"
 //= require popper
 //= require bootstrap-sprockets
 
+$(document).ready(function(){
+  $('.articles-prez').click(function(){
+    $(this).toggleClass("spread");
+  });
+});

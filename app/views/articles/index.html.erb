@@ -1,5 +1,55 @@
 <div class="articles-boite">
-  <% @articles.each do |article| %>
-      <%= render 'article', article: article %>
+  <div class="articles-prez cartes-deck">
+    <div class="article-boite boutique-b">
+      <h3 class="title supermarket">
+        Boutique B.
+      </h3>
+      <div class="description-of-this-blob">
+        <p class="article-text">Boutique B. est un vraiment super projet d'éditions d'art inititié par B</p>
+      </div>
+    </div>
+    <div class="article-boite pas-boutique-b">
+      <h3 class="title supermarket">
+        Qui sommes blob ?
+      </h3>
+      <div class="description-of-this-blob">
+        <p class="article-text">Blob sont Chloé, Clara et Paul. Blob vivent et se déploient sous différentes formes. Souvent jaunes. Parfois informes. Blob n'a peur de rien et s'étend parfois sur plusieurs kilomètres. Blob est la pour rester. Même après l'effondrement.</p>
+      </div>
+    </div>
+  </div>
+  <% @categories.each do |categorie| %>
+    <div class="artistes-carte cartes-deck">
+      <div class="article-boite">
+        <h3 class="title supermarket">
+          <%= categorie.upcase %>
+        </h3>
+        <div class="description-of-this-blob">
+          <p class="article-text"></p>
+        </div>
+      </div>
+    </div>
   <% end %>
+    <div class="artistes-carte cartes-deck">
+      <div class="article-boite">
+        <h3 class="title supermarket">
+          Le jeu
+        </h3>
+        <div class="description-of-this-blob">
+          <p class="article-text"></p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  <%# @articles.each do |article| %>
+      <%#= render 'article', article: article %>
+  <%# end %>
 </div>

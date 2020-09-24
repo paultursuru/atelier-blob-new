@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.all.order(created_at: :desc).where(visible: true)
     end
+    @categories = ['artiste', 'catalogue', 'evenement', 'appel']
   end
 
   def new

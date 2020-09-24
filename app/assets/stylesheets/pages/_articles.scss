@@ -1,27 +1,68 @@
+@keyframes two-cards-move {
+  0% { top: 0; left: 0;}
+  30% { top: 10px; left: 20px; transform: rotate(2deg); }
+  68%, 72% { top: 5px; left: 15px; transform: rotate(10deg); }
+  100% { top: 0; left: 10px; transform: rotate(5deg);  }
+}
+@keyframes z-index-doublecard {
+  0% { z-index: 2;}
+  100% { z-index: 2;}
+}
+
 .big-title {
   font-size: 150px;
+}
+.articles-prez.spread {
+  .article-boite.pas-boutique-b {
+    transition: all ease-in 0.3s;
+    left: 100px;
+    background: white;
+    transform: rotate(15deg);
+    z-index: 1;
+  }
+}
+.articles-prez {
+  position: relative;
+  .article-boite.boutique-b {
+    position: absolute;
+    transform: rotate(-6deg);
+    top: 5px;
+    background: white;
+    z-index: 1;
+  }
+  .article-boite.pas-boutique-b {
+    transition: all ease-in 0.3s;
+    background: white;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
 }
 .articles-boite {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin: 0 auto;
   width: 90%;
+  position: relative;
+  .cartes-deck {
+    width: 340px;
+  }
   .article-boite.non-visible {
     opacity: 50%;
   }
   .article-boite {
     display: flex;
     flex-direction: column;
-    width: 350px;
+    width: 340px;
     height: 600px;
     overflow: hidden;
-    padding: 20px;
+    padding: 30px;
     border: solid 1px gray;
     border-radius: 20px;
     margin: 20px auto 40px;
     .title {
-      margin: 0;
+      margin: 0 0 15px 0;
     }
     .article-photo {
       max-height: 400px;
@@ -30,6 +71,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin-bottom: 15px;
     }
     .modal-body {
       .article-photo {
@@ -46,7 +88,6 @@
       .material {
         font-style: italic;
         font-size: 14px;
-        margin: 15px 0;
       }
       .article-text {
         font-size: 12px;
