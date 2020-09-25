@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
       @articles = Article.all.order(created_at: :desc).where(visible: true)
     end
     @categories = ['artiste', 'catalogue', 'evenement', 'appel']
+    @article_per_categories = @categories.map{ |cat| [cat, [@articles.where(article_type: cat)] ] }
   end
 
   def new

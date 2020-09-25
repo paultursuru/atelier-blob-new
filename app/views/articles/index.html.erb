@@ -17,19 +17,32 @@
       </div>
     </div>
   </div>
-  <% @categories.each do |categorie| %>
-    <div class="artistes-carte cartes-deck">
-      <div class="article-boite">
+  <% @article_per_categories.each do |categorie| %>
+    <div class="<%= categorie[0] %>s-deck cartes-deck">
+      <div class="article-boite <%= categorie[0] %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
         <h3 class="title supermarket">
-          <%= categorie.upcase %>
+          <%= categorie[0].upcase %>
         </h3>
-        <div class="description-of-this-blob">
-          <p class="article-text"></p>
-        </div>
+      </div>
+      <div class="<%= categorie[0] %>s-cards this-categorie-cards">
+        <% categorie[1][0].each do |article| %>
+            <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
+                  style=" transform: rotate(<%= (-15..15).to_a.sample %>deg);
+                          top: <%= (0..5).to_a.sample %>px;
+                          left: <%= (0..5).to_a.sample %>px; ">
+              <h3 class="title supermarket">
+                <%= article.title.upcase %>
+              </h3>
+              <div class="description-of-this-blob">
+                <p class="article-text"><%= article.article_text %></p>
+              </div>
+              <%= image_tag "random-artist.jpg", alt: "alttext" %>
+            </div>
+        <% end %>
       </div>
     </div>
   <% end %>
-    <div class="artistes-carte cartes-deck">
+    <div class="artistes-carte cartes-deck jeu-cards">
       <div class="article-boite">
         <h3 class="title supermarket">
           Le jeu

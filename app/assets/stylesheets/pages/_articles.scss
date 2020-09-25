@@ -18,11 +18,11 @@
     left: 100px;
     background: white;
     transform: rotate(15deg);
-    z-index: 1;
+    z-index: 2;
   }
 }
 .articles-prez {
-  position: relative;
+  // position: relative;
   .article-boite.boutique-b {
     position: absolute;
     transform: rotate(-6deg);
@@ -47,7 +47,57 @@
   position: relative;
   .cartes-deck {
     width: 340px;
+    height: 600px;
+    // z-index: 1;
+    margin-bottom: 60px;
+    position: relative;
+    display:flex;
+    transition: all ease 1s;
+    .top-of-deck {
+      position: absolute;
+      z-index: 1;
+      background: white;
+    }
+    .this-categorie-cards {
+      position: relative;
+      top: 0;
+      opacity: 1;
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      z-index: 0;
+      .this-categorie-card {
+        position: absolute;
+        background: white;
+      }
+    }
   }
+  .cartes-deck.card-spread {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+        // transition: all ease-in 0.3s;
+    .top-of-deck {
+      display: none;
+    }
+    .this-categorie-cards {
+      z-index: 5;
+        // transition: all ease-in 0.3s;
+      .this-categorie-card {
+        // transition: all ease-in 0.3s;
+        position: relative;
+        margin: 20px;
+        box-shadow: 2px 3px 5px gray;
+      }
+    }
+  }
+
+
+
+
   .article-boite.non-visible {
     opacity: 50%;
   }

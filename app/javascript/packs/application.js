@@ -25,3 +25,9 @@ $(document).ready(function(){
     $(this).toggleClass("spread");
   });
 });
+
+$(document).ready(function(){
+  $('.artistes-deck').click(function(){
+    $(this).toggleClass("card-spread");
+  });
+});
