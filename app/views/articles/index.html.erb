@@ -25,6 +25,12 @@
         </h3>
       </div>
       <div class="<%= categorie[0] %>s-cards this-categorie-cards">
+        <% if user_signed_in? %>
+          <%= link_to "j'édite le blob", edit_article_path(article) %>
+          <% unless article.visible %>
+            <p class="legende">ce blob est invisible au grand public</p>
+          <% end %>
+        <% end %>
         <% categorie[1][0].each do |article| %>
           <% if article.article_type == 'artistes' %>
             <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
