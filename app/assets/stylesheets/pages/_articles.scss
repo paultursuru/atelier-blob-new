@@ -19,6 +19,7 @@
     background: white;
     transform: rotate(15deg);
     z-index: 2;
+    box-shadow: 2px 3px 5px gray;
   }
 }
 .articles-prez {
@@ -36,7 +37,6 @@
     top: 0;
     left: 0;
     position: absolute;
-    box-shadow: 2px 3px 5px gray;
   }
 }
 .articles-boite {
