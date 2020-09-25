@@ -26,17 +26,17 @@
       </div>
       <div class="<%= categorie[0] %>s-cards this-categorie-cards">
         <% categorie[1][0].each do |article| %>
-          <% if user_signed_in? %>
-            <%= link_to "j'édite le blob", edit_article_path(article) %>
-            <% unless article.visible %>
-              <p class="legende">ce blob est invisible au grand public</p>
-            <% end %>
-          <% end %>
           <% if article.article_type == 'artistes' %>
             <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
                   style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
                           top: <%= (-5..5).to_a.sample %>px;
                           left: <%= (-5..5).to_a.sample %>px; ">
+              <% if user_signed_in? %>
+                <%= link_to "j'édite le blob", edit_article_path(article) %>
+                <% unless article.visible %>
+                  <p class="legende">ce blob est invisible au grand public</p>
+                <% end %>
+              <% end %>
               <h3 class="title supermarket">
                 <%= article.title.upcase %>
               </h3>
@@ -56,6 +56,12 @@
                   style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
                           top: <%= (-5..5).to_a.sample %>px;
                           left: <%= (-5..5).to_a.sample %>px; ">
+              <% if user_signed_in? %>
+                <%= link_to "j'édite le blob", edit_article_path(article) %>
+                <% unless article.visible %>
+                  <p class="legende">ce blob est invisible au grand public</p>
+                <% end %>
+              <% end %>
               <% if article.photo.attached? %>
                 <div class="article-photo">
                   <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
