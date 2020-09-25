@@ -18,18 +18,19 @@
     </div>
   </div>
   <% @article_per_categories.each do |categorie| %>
-    <div class="<%= categorie[0] %>s-deck cartes-deck">
+    <div id="<%= categorie[0].parameterize %>" class="<%= categorie[0] %>s-deck cartes-deck">
       <div class="article-boite <%= categorie[0] %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
         <h3 class="title supermarket">
-          <%= categorie[0].upcase %>
+          <%= categorie[0].upcase.parameterize %>
         </h3>
       </div>
       <div class="<%= categorie[0] %>s-cards this-categorie-cards">
         <% categorie[1][0].each do |article| %>
+          <% if article.article_type == 'artistes' %>
             <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
-                  style=" transform: rotate(<%= (-15..15).to_a.sample %>deg);
-                          top: <%= (0..5).to_a.sample %>px;
-                          left: <%= (0..5).to_a.sample %>px; ">
+                  style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
+                          top: <%= (-5..5).to_a.sample %>px;
+                          left: <%= (-5..5).to_a.sample %>px; ">
               <h3 class="title supermarket">
                 <%= article.title.upcase %>
               </h3>
@@ -38,6 +39,24 @@
               </div>
               <%= image_tag "random-artist.jpg", alt: "alttext" %>
             </div>
+          <% elsif article.article_type == 'catalogue' %>
+            <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
+                  style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
+                          top: <%= (-5..5).to_a.sample %>px;
+                          left: <%= (-5..5).to_a.sample %>px; ">
+              <%= image_tag "random-artist.jpg", alt: "alttext" %>
+              <h5 class="title supermarket">
+                <%= article.title.upcase %>
+              </h5>
+              <div class="description-of-this-blob">
+                <p class="material">
+                  <%= article.material + ", " unless article.material.empty? %>
+                  <%= article.year unless article.year.nil? %>
+                </p>
+                <p class="article-text"><%= article.article_text %></p>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

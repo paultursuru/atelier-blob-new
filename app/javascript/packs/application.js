@@ -27,7 +27,25 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  $('.artistes-deck').click(function(){
+  $('#artistes').click(function(){
+    $(this).toggleClass("card-spread");
+  });
+});
+
+$(document).ready(function(){
+  $('#catalogue').click(function(){
+    $(this).toggleClass("card-spread");
+  });
+});
+
+$(document).ready(function(){
+  $('#evenements').click(function(){
+    $(this).toggleClass("card-spread");
+  });
+});
+
+$(document).ready(function(){
+  $('#appels-a-projet').click(function(){
     $(this).toggleClass("card-spread");
   });
 });

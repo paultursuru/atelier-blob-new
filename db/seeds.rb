@@ -7,9 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Article.destroy_all
 puts 'starting'
-10.times do
+5.times do
   Article.create!(title: 'Martine', year: '1988',
-                  article_type: 'artiste', visible: true,
+                  article_type: 'artistes', visible: true,
                   article_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ' )
+end
+10.times do
+  Article.create!(title: 'Titre', year: '2020',
+                  article_type: 'catalogue', visible: true, material: 'béton ciré, chocolat, acrylique',
+                  article_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit! ')
 end
 puts 'finished'

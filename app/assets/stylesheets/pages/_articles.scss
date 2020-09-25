@@ -36,6 +36,7 @@
     top: 0;
     left: 0;
     position: absolute;
+    box-shadow: 2px 3px 5px gray;
   }
 }
 .articles-boite {
@@ -52,7 +53,7 @@
     margin-bottom: 60px;
     position: relative;
     display:flex;
-    transition: all ease 1s;
+    transition: all ease 0.3s;
     .top-of-deck {
       position: absolute;
       z-index: 1;
