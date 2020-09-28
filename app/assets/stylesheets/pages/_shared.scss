@@ -45,16 +45,30 @@ html {
   position: fixed;
   z-index: 10;
   top: 0;
+  color: white;
+  a, a:hover {
+    text-decoration: none;
+    color: white;
+  }
   .top-of-nav {
-    margin: 10px;
+    margin: 10px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .left-side-nav, .right-side-nav {
+      width: 25%;
+    }
+    .left-side-nav {
+      display: flex;
+      align-items: center;
+      .boutique-b-title {
+        font-size: 54px;
+      }
+    }
     .right-side-nav {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
       height: 100px;
       margin: 0 20px;
       flex-wrap: wrap;
@@ -65,8 +79,7 @@ html {
         width: max-content;
       }
       .what-is-blob {
-        font-size: 10px;
-        text-align: right;
+        font-size: 18px;
         margin: 0;
       }
     }
