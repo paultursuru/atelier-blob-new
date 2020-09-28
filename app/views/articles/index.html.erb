@@ -85,18 +85,24 @@
       </div>
     </div>
   <% end %>
-    <div class="artistes-carte cartes-deck jeu-cards">
-      <div class="article-boite">
-        <h3 class="title supermarket">
-          Le jeu
-        </h3>
-        <div class="description-of-this-blob">
-          <p class="article-text"></p>
+
+<!--     <div class="scene artistes-carte cartes-deck jeu-cards">
+      <div class="article-boite flip-card">
+        <div class="card__face--front card__face">
+            le jeu
+        </div>
+        <div class="card__face--back card__face">
+            la victoire
         </div>
       </div>
-    </div>
+    </div> -->
 
-
+<div class="scene scene--card cartes-deck">
+  <div class="card to_flip article-boite supermarket">
+    <div class="card__face card__face--front"><h3>Le jeu</h3></div>
+    <div class="card__face card__face--back" id='card-back-game'>Perdu !</div>
+  </div>
+</div>
 
 
 

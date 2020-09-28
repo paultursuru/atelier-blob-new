@@ -49,3 +49,21 @@ $(document).ready(function(){
     $(this).toggleClass("card-spread");
   });
 });
+
+$(document).ready(function(){
+  $('.to_flip').click(function(){
+    if (document.querySelector('.is-flipped')) {
+      $(this).toggleClass("is-flipped");
+    }
+    else {
+      $(this).toggleClass("is-flipped");
+      let victoire = Math.floor((Math.random() * 100) + 1);
+      if (victoire > 50) {
+        document.getElementById('card-back-game').innerHTML = 'Victoire !';
+      }
+      else { document.getElementById('card-back-game').innerHTML = 'perdu !'; }
+      }
+    });
+});
+
+
