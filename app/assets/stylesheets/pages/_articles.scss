@@ -47,8 +47,7 @@
   width: 90%;
   position: relative;
   .cartes-deck {
-      cursor: pointer;
-
+    cursor: pointer;
     width: 340px;
     height: 600px;
     // z-index: 1;
@@ -59,7 +58,16 @@
     .top-of-deck {
       position: absolute;
       z-index: 1;
-      background: white;
+      background-color: white;
+      justify-content: center;
+      align-items: center;
+      .title {
+        background-color: white;
+        margin: 0;
+        padding: 10px;
+        border-radius: 30px;
+        border: solid 3px;
+      }
     }
     .this-categorie-cards {
       position: relative;
@@ -173,19 +181,37 @@
   }
 
   .card__face--front {
-    // background: red;
+    background-image: url(jeu.png);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      font-size: 40px;
+      padding: 10px;
+      border-radius: 30px;
+      background-color: white;
+      border: solid 3px;
+    }
   }
 
   .card__face--back {
-    background: white;
+    background-color: white;
     transform: rotateY(180deg);
   }
 }
 
 
 
-
-
+.catalogue-top {
+  background-image: url(catalogue.png);
+}
+.artistes-top {
+  background-image: url(artistes.png);
+}
+.appels-a-projet-top {
+  background-image: url(appel.png);
+}
 
 
 
@@ -207,6 +233,7 @@
     margin: 20px auto 40px;
     .title {
       margin: 0 0 15px 0;
+      font-size: 40px;
     }
     .article-photo {
       max-height: 400px;

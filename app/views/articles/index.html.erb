@@ -18,13 +18,13 @@
     </div>
   </div>
   <% @article_per_categories.each do |categorie| %>
-    <div id="<%= categorie[0].parameterize %>" class="<%= categorie[0] %>s-deck cartes-deck">
-      <div class="article-boite <%= categorie[0] %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
+    <div id="<%= categorie[0].parameterize %>" class="<%= categorie[0].parameterize %>s-deck cartes-deck">
+      <div class="article-boite <%= categorie[0].parameterize %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
         <h3 class="title supermarket">
           <%= categorie[0].upcase %>
         </h3>
       </div>
-      <div class="<%= categorie[0] %>s-cards this-categorie-cards">
+      <div class="<%= categorie[0].parameterize %>s-cards this-categorie-cards">
         <% categorie[1][0].each do |article| %>
           <% if article.article_type == 'artistes' %>
             <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
