@@ -73,6 +73,7 @@
                 <%= article.title.upcase %>
               </h5>
               <div class="description-of-this-blob">
+                <p class="material"><%= article.ext_url unless article.ext_url.empty %> </p>
                 <p class="material">
                   <%= article.material + ", " unless article.material.empty? %>
                   <%= article.year unless article.year.nil? %>
