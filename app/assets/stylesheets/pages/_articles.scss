@@ -42,14 +42,19 @@
 .articles-boite {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 90%;
+  // justify-content: space-between;
+  // margin: 0 auto;
+  // width: 90%;
   position: relative;
+  justify-content: space-around;
+  margin: 0;
+  width: 100%;
   .cartes-deck {
     cursor: pointer;
-    width: 330px;
+    // width: 330px;
     height: 600px;
+    width: 340px;
+    margin: 0 20px;
     // z-index: 1;
     margin-bottom: 60px;
     position: relative;
@@ -90,6 +95,9 @@
     position: absolute;
     display: flex;
     flex-wrap: wrap;
+    background: white;
+    z-index: 2;
+    height: 100%;
         // transition: all ease-in 0.3s;
     .top-of-deck {
       display: none;
