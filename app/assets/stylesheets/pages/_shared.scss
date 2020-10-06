@@ -7,7 +7,11 @@ html {
     scroll-behavior: auto;
   }
 }
-
+.blob-admin {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
 .vert-blob-text {
   color: $vert_blob;
 }

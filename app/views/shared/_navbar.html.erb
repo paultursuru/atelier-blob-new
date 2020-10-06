@@ -21,7 +21,7 @@
   </div>
 
   <% if user_signed_in? %>
-    <div class="blob_admin">
+    <div class="blob-admin">
       <%= link_to "j'ajoute un blob", new_article_path %>
       <%= link_to "je me déco", destroy_user_session_path, method: :delete %>
     </div>
