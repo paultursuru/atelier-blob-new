@@ -11,6 +11,6 @@
   <%= f.submit 'enregister' %>
   <%= link_to 'supprimer cet article', article_path(@article),
     method: :delete,
-    data: {confirm: 'est-ce que tes vraiment certaine certaine certaine que tu veux supprimer cet article'} %>
+    data: {confirm: 'est-ce que tes vraiment certaine certaine certaine que tu veux supprimer cet article'} unless @article.id.nil? %>
 <% end %>
 
