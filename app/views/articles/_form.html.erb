@@ -3,7 +3,7 @@
   <%= f.input :material %>
   <%= f.input :year, label: "Année de création ou dates de l'évenement" %>
   <%= f.input :article_text, as: :text %>
-  <%= f.input :ext_url label: "url externe OU nom de l'artiste si catégorie 'catalogue'" %>
+  <%= f.input :ext_url, label: "url externe OU nom de l'artiste si catégorie -catalogue-" %>
   <%= f.input :article_type, collection: ['artistes', 'catalogue', 'evenements', 'appels a projet'] %>
   <%= f.input :visible, as: :radio_buttons %>
   <%= cl_image_tag @article.photo.key, width: 350, crop: :fill if @article.photo.attached? %>
