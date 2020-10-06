@@ -72,6 +72,7 @@
         padding: 10px;
         border-radius: 30px;
         border: solid 3px;
+        width: max-content;
       }
     }
     .this-categorie-cards {
@@ -91,7 +92,7 @@
     }
   }
   .cartes-deck.card-spread {
-    width: 100%;
+    width: 97%;
     position: absolute;
     display: flex;
     flex-wrap: wrap;
