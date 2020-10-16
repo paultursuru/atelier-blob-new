@@ -90,12 +90,6 @@
     <% else %>
       <div id="<%= categorie[0].parameterize %>" class="<%= categorie[0].parameterize %>s-deck cartes-deck">
         <div class="article-boite <%= categorie[0].parameterize %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
-          <% if user_signed_in? %>
-            <%= link_to "j'édite le blob", edit_article_path(@last_appel) %>
-            <% unless @last_appel.visible %>
-              <p class="legende">ce blob est invisible au grand public</p>
-            <% end %>
-          <% end %>
           <h3 class="title supermarket">
             <%= categorie[0].upcase %>
           </h3>
