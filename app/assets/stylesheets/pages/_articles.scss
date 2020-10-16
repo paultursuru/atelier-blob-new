@@ -12,14 +12,17 @@
 .big-title {
   font-size: 150px;
 }
-.articles-prez.spread {
-  .article-boite.pas-boutique-b {
+.articles-prez.spread, #appels-a-projet.spread {
+  .article-boite.pas-boutique-b, .article-boite.appels-a-projet-card.this-categorie-card {
     transition: all ease-in 0.3s;
-    left: 100px;
+    left: 100px !important;
     background: white;
-    transform: rotate(15deg);
+    transform: rotate(15deg) !important;
     z-index: 2;
     box-shadow: 2px 3px 5px gray;
+  }
+  .appels-a-projets-cards.this-categorie-cards {
+    z-index: 1;
   }
 }
 .articles-prez {

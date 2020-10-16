@@ -25,13 +25,17 @@ $(document).ready(function(){
     $(this).toggleClass("spread");
   });
 });
+$(document).ready(function(){
+  $('#appels-a-projet').click(function(){
+    $(this).toggleClass("spread");
+  });
+});
 
 $(document).ready(function(){
   $('#artistes').click(function(){
     $(this).toggleClass("card-spread");
   });
 });
-
 $(document).ready(function(){
   $('#catalogue').click(function(){
     $(this).toggleClass("card-spread");

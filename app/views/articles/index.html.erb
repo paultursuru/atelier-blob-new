@@ -18,73 +18,127 @@
     </div>
   </div>
   <% @article_per_categories.each do |categorie| %>
-    <div id="<%= categorie[0].parameterize %>" class="<%= categorie[0].parameterize %>s-deck cartes-deck">
-      <div class="article-boite <%= categorie[0].parameterize %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
-        <h3 class="title supermarket">
-          <%= categorie[0].upcase %>
-        </h3>
+    <% if categorie[0].parameterize != "appels-a-projet" %>
+      <div id="<%= categorie[0].parameterize %>" class="<%= categorie[0].parameterize %>s-deck cartes-deck">
+        <div class="article-boite <%= categorie[0].parameterize %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
+          <h3 class="title supermarket">
+            <%= categorie[0].upcase %>
+          </h3>
+        </div>
+        <div class="<%= categorie[0].parameterize %>s-cards this-categorie-cards">
+          <% categorie[1][0].each do |article| %>
+            <% if article.article_type == 'artistes' %>
+              <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
+                    style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
+                            top: <%= (-5..5).to_a.sample %>px;
+                            left: <%= (-5..5).to_a.sample %>px; ">
+                <% if user_signed_in? %>
+                  <%= link_to "j'édite le blob", edit_article_path(article) %>
+                  <% unless article.visible %>
+                    <p class="legende">ce blob est invisible au grand public</p>
+                  <% end %>
+                <% end %>
+                <h3 class="title supermarket">
+                  <%= article.title.upcase %>
+                </h3>
+                <div class="description-of-this-blob">
+                  <p class="article-text"><%= article.article_text %></p>
+                </div>
+                <% if article.photo.attached? %>
+                  <div class="article-photo">
+                    <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
+                      <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
+                    </button>
+                  </div>
+                <% end %>
+              </div>
+            <% elsif article.article_type == 'catalogue' %>
+              <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
+                    style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
+                            top: <%= (-5..5).to_a.sample %>px;
+                            left: <%= (-5..5).to_a.sample %>px; ">
+                <% if user_signed_in? %>
+                  <%= link_to "j'édite le blob", edit_article_path(article) %>
+                  <% unless article.visible %>
+                    <p class="legende">ce blob est invisible au grand public</p>
+                  <% end %>
+                <% end %>
+                <% if article.photo.attached? %>
+                  <div class="article-photo">
+                    <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
+                      <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
+                    </button>
+                  </div>
+                <% end %>
+                <h5 class="title supermarket">
+                  <%= article.title.upcase %>
+                </h5>
+                <div class="description-of-this-blob">
+                  <p class="material"><%= article.ext_url unless article.ext_url.nil? %> </p>
+                  <p class="material">
+                    <%= article.material + ", " unless article.material.empty? %>
+                    <%= article.year unless article.year.nil? %>
+                  </p>
+                  <p class="article-text"><%= article.article_text %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-      <div class="<%= categorie[0].parameterize %>s-cards this-categorie-cards">
-        <% categorie[1][0].each do |article| %>
-          <% if article.article_type == 'artistes' %>
-            <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
+    <% else %>
+      <div id="<%= categorie[0].parameterize %>" class="<%= categorie[0].parameterize %>s-deck cartes-deck">
+        <div class="article-boite <%= categorie[0].parameterize %>-top top-of-deck" style="transform: rotate(<%= (-10..10).to_a.sample %>deg);">
+          <h3 class="title supermarket">
+            <%= categorie[0].upcase %>
+          </h3>
+        </div>
+        <div class="<%= categorie[0].parameterize %>s-cards this-categorie-cards">
+          <% if categorie[1][0].count > 1 %>
+            <% article = categorie[1][0].first %>
+              <% if article.article_type == 'appels-a-projet' %>
+                <div class="article-boite <%= categorie[0].parameterize %>-card this-categorie-card"
+                      style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
+                              top: <%= (-5..5).to_a.sample %>px;
+                              left: <%= (-5..5).to_a.sample %>px; ">
+                  <% if user_signed_in? %>
+                    <%= link_to "j'édite le blob", edit_article_path(article) %>
+                    <% unless article.visible %>
+                      <p class="legende">ce blob est invisible au grand public</p>
+                    <% end %>
+                  <% end %>
+                  <h3 class="title supermarket">
+                    <%= article.title.upcase %>
+                  </h3>
+                  <div class="description-of-this-blob">
+                    <p class="article-text"><%= article.article_text %></p>
+                  </div>
+                  <% if article.photo.attached? %>
+                    <div class="article-photo">
+                      <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
+                        <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
+                      </button>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <%# end %>
+          <% else %>
+            <div class="article-boite <%= categorie[0].parameterize %>-card this-categorie-card"
                   style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
                           top: <%= (-5..5).to_a.sample %>px;
                           left: <%= (-5..5).to_a.sample %>px; ">
-              <% if user_signed_in? %>
-                <%= link_to "j'édite le blob", edit_article_path(article) %>
-                <% unless article.visible %>
-                  <p class="legende">ce blob est invisible au grand public</p>
-                <% end %>
-              <% end %>
               <h3 class="title supermarket">
-                <%= article.title.upcase %>
+                Pas d'appel a projet pour l'instant !
               </h3>
               <div class="description-of-this-blob">
-                <p class="article-text"><%= article.article_text %></p>
-              </div>
-              <% if article.photo.attached? %>
-                <div class="article-photo">
-                  <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
-                    <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
-                  </button>
-                </div>
-              <% end %>
-            </div>
-          <% elsif article.article_type == 'catalogue' %>
-            <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
-                  style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
-                          top: <%= (-5..5).to_a.sample %>px;
-                          left: <%= (-5..5).to_a.sample %>px; ">
-              <% if user_signed_in? %>
-                <%= link_to "j'édite le blob", edit_article_path(article) %>
-                <% unless article.visible %>
-                  <p class="legende">ce blob est invisible au grand public</p>
-                <% end %>
-              <% end %>
-              <% if article.photo.attached? %>
-                <div class="article-photo">
-                  <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
-                    <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
-                  </button>
-                </div>
-              <% end %>
-              <h5 class="title supermarket">
-                <%= article.title.upcase %>
-              </h5>
-              <div class="description-of-this-blob">
-                <p class="material"><%= article.ext_url unless article.ext_url.nil? %> </p>
-                <p class="material">
-                  <%= article.material + ", " unless article.material.empty? %>
-                  <%= article.year unless article.year.nil? %>
-                </p>
-                <p class="article-text"><%= article.article_text %></p>
+                <p class="article-text"></p>
               </div>
             </div>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 
 <!--     <div class="scene artistes-carte cartes-deck jeu-cards">
