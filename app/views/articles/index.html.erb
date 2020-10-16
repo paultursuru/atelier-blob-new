@@ -38,12 +38,6 @@
                     <p class="legende">ce blob est invisible au grand public</p>
                   <% end %>
                 <% end %>
-                <h3 class="title supermarket">
-                  <%= article.title.upcase %>
-                </h3>
-                <div class="description-of-this-blob">
-                  <p class="article-text"><%= article.article_text %></p>
-                </div>
                 <% if article.photo.attached? %>
                   <div class="article-photo">
                     <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
@@ -51,6 +45,13 @@
                     </button>
                   </div>
                 <% end %>
+                <h3 class="title supermarket">
+                  <%= article.title.upcase %>
+                </h3>
+                <div class="description-of-this-blob">
+                  <p class="article-text"><%= article.article_text unless article.ext_url.nil? %></p>
+                  <p class="article-text"><%= link_to "website", article.ext_url unless article.ext_url.nil? %></p>
+                </div>
               </div>
             <% elsif article.article_type == 'catalogue' %>
               <div class="article-boite <%= categorie[0] %>-card this-categorie-card"
