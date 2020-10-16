@@ -49,7 +49,7 @@
                   <%= article.title.upcase %>
                 </h3>
                 <div class="description-of-this-blob">
-                  <p class="article-text"><%= article.article_text unless article.ext_url.nil? %></p>
+                  <p class="article-text"><%= article.article_text unless article.article_text.nil? %></p>
                   <p class="article-text"><%= link_to "website", article.ext_url unless article.ext_url.nil? %></p>
                 </div>
               </div>
@@ -96,40 +96,35 @@
         </div>
         <div class="<%= categorie[0].parameterize %>s-cards this-categorie-cards">
           <% if !categorie[1][0][0].nil?%>
-            <%# raise %>
-              <% if @last_appel.article_type == 'appels a projet' %>
-                <div class="article-boite <%= categorie[0].parameterize %>-card this-categorie-card"
-                      style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
-                              top: <%= (-5..5).to_a.sample %>px;
-                              left: <%= (-5..5).to_a.sample %>px; ">
-                  <% if user_signed_in? %>
-                    <%= link_to "j'édite le blob", edit_article_path(@last_appel) %>
-                    <% unless @last_appel.visible %>
-                      <p class="legende">ce blob est invisible au grand public</p>
-                    <% end %>
+            <% if @last_appel.article_type == 'appels a projet' %>
+              <div class="article-boite <%= categorie[0].parameterize %>-card this-categorie-card"
+                    style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
+                            top: <%= (-5..5).to_a.sample %>px;
+                            left: <%= (-5..5).to_a.sample %>px; ">
+                <% if user_signed_in? %>
+                  <%= link_to "j'édite le blob", edit_article_path(@last_appel) %>
+                  <% unless @last_appel.visible %>
+                    <p class="legende">ce blob est invisible au grand public</p>
                   <% end %>
-                  <h3 class="title supermarket">
-                    <%= @last_appel.title.upcase %>
-                  </h3>
-                  <% if @last_appel.photo.attached? %>
-                    <div class="article-photo">
-                      <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= @last_appel.id %>">
-                        <%= cl_image_tag @last_appel.photo.key, width: 300, crop: "scale" %>
-                      </button>
-                    </div>
-                  <% end %>
-                  <div class="description-of-this-blob">
-                    <p class="article-text">Date limite : <%= @last_appel.year %></p>
+                <% end %>
+                <h3 class="title supermarket">
+                  <%= @last_appel.title.upcase %>
+                </h3>
+                <% if @last_appel.photo.attached? %>
+                  <div class="article-photo">
+                    <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= @last_appel.id %>">
+                      <%= cl_image_tag @last_appel.photo.key, width: 300, crop: "scale" %>
+                    </button>
                   </div>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    <p class="supermarket">En savoir plus !</p>
-                  </button>
-
-                  <!-- Modal -->
+                <% end %>
+                <div class="description-of-this-blob">
+                  <p class="article-text">Date limite : <%= @last_appel.year %></p>
                 </div>
-              <% end %>
-            <%# end %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalAppels">
+                  <p class="supermarket">En savoir plus !</p>
+                </button>
+              </div>
+            <% end %>
           <% else %>
             <div class="article-boite <%= categorie[0].parameterize %>-card this-categorie-card"
                   style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
@@ -148,7 +143,7 @@
     <% end %>
   <% end %>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalAppels" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -165,7 +160,15 @@
             </button>
           </div>
         <% end %>
-        <%= @last_appel.article_text %>
+        <div>
+          <p><%= @last_appel.article_text %></p>
+        </div>
+        <div><h5>Date limite :</h5> <%= @last_appel.year %></div>
+        <div>
+          <h5>Contenu du dossier :</h5>
+          <p>Une présentation du projet, un CV, un portfolio, un budget prévisionnel de production.</p>
+        </div>
+        <div><h5>Envoyez vos dossiers sur <%= @last_appel.ext_url %></h5></div>
       </div>
     </div>
   </div>
