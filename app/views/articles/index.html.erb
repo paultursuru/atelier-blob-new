@@ -109,11 +109,8 @@
                     <% end %>
                   <% end %>
                   <h3 class="title supermarket">
-                    <%= article.title.parameterize.upcase %>
+                    <%= article.title.upcase %>
                   </h3>
-                  <div class="description-of-this-blob">
-                    <p class="article-text"><%= article.article_text %></p>
-                  </div>
                   <% if article.photo.attached? %>
                     <div class="article-photo">
                       <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
@@ -121,6 +118,9 @@
                       </button>
                     </div>
                   <% end %>
+                  <div class="description-of-this-blob">
+                    <p class="article-text">Date limite : <%= article.year %></p>
+                  </div>
                 </div>
               <% end %>
             <%# end %>
