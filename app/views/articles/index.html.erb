@@ -156,7 +156,7 @@
         <% if @last_appel.photo.attached? %>
           <div class="article-photo">
             <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= @last_appel.id %>">
-              <%= cl_image_tag @last_appel.photo.key, width: 300, crop: "scale" %>
+              <%= cl_image_tag @last_appel.photo.key, width: 500, crop: "scale" %>
             </button>
           </div>
         <% end %>
@@ -168,7 +168,7 @@
           <h5>Contenu du dossier :</h5>
           <p>Une présentation du projet, un CV, un portfolio, un budget prévisionnel de production.</p>
         </div>
-        <div><h5>Envoyez vos dossiers sur <%= @last_appel.ext_url %></h5></div>
+        <div><h5>Envoyez vos dossiers sur : <%= @last_appel.ext_url %></h5></div>
       </div>
     </div>
   </div>
