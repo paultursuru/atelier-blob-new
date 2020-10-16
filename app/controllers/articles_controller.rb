@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
     end
     @categories = ['catalogue', 'artistes', 'evenements', 'appels a projet']
     @article_per_categories = @categories.map{ |cat| [cat, [@articles.where(article_type: cat)] ] }
+    @last_appel = @articles.where(article_type: 'appel a projet').last
   end
 
   def new

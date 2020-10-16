@@ -95,31 +95,30 @@
         </div>
         <div class="<%= categorie[0].parameterize %>s-cards this-categorie-cards">
           <% if !categorie[1][0][0].nil?%>
-            <% article = categorie[1][0][0] %>
             <%# raise %>
-              <% if article.article_type == 'appels a projet' %>
+              <% if @last_appel.article_type == 'appels a projet' %>
                 <div class="article-boite <%= categorie[0].parameterize %>-card this-categorie-card"
                       style=" transform: rotate(<%= (-10..10).to_a.sample %>deg);
                               top: <%= (-5..5).to_a.sample %>px;
                               left: <%= (-5..5).to_a.sample %>px; ">
                   <% if user_signed_in? %>
-                    <%= link_to "j'édite le blob", edit_article_path(article) %>
-                    <% unless article.visible %>
+                    <%= link_to "j'édite le blob", edit_article_path(@last_appel) %>
+                    <% unless @last_appel.visible %>
                       <p class="legende">ce blob est invisible au grand public</p>
                     <% end %>
                   <% end %>
                   <h3 class="title supermarket">
-                    <%= article.title.upcase %>
+                    <%= @last_appel.title.upcase %>
                   </h3>
-                  <% if article.photo.attached? %>
+                  <% if @last_appel.photo.attached? %>
                     <div class="article-photo">
-                      <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
-                        <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
+                      <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= @last_appel.id %>">
+                        <%= cl_image_tag @last_appel.photo.key, width: 300, crop: "scale" %>
                       </button>
                     </div>
                   <% end %>
                   <div class="description-of-this-blob">
-                    <p class="article-text">Date limite : <%= article.year %></p>
+                    <p class="article-text">Date limite : <%= @last_appel.year %></p>
                   </div>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -152,20 +151,20 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title title supermarket" id="exampleModalLabel"><%= article.title.upcase %></h5>
+        <h5 class="modal-title title supermarket" id="exampleModalLabel"><%= @last_appel.title.upcase %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <% if article.photo.attached? %>
+        <% if @last_appel.photo.attached? %>
           <div class="article-photo">
-            <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= article.id %>">
-              <%= cl_image_tag article.photo.key, width: 300, crop: "scale" %>
+            <button type="button" class="modal-btn photo-btn" data-toggle="modal" data-target="#modalArticle-<%= @last_appel.id %>">
+              <%= cl_image_tag @last_appel.photo.key, width: 300, crop: "scale" %>
             </button>
           </div>
         <% end %>
-        <%= article.article_text %>
+        <%= @last_appel.article_text %>
       </div>
     </div>
   </div>
